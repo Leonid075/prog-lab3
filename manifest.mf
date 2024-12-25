@@ -1,0 +1,4 @@
+Manifest-Version: 1.2
+Created-By: leonid075
+Class-Path: build/
+Main-Class: Main
