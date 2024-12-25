@@ -2,7 +2,7 @@
 
 ## Build
 
-```javac -cp ".:./Pokemon.jar" -d build Main.java```
+```javac -cp "." -d build Main.java```
 
 
 ## Run
