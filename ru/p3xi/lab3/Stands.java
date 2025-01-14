@@ -5,16 +5,11 @@ public class Stands extends Furniture {
     public Tool tool;
 
     @Override
-    public void standOn(Tool tool) {
-        try{
-            if(this.tool != null) {
-                throw new BusyException("подставка уже занята");
-            }
-            this.tool = tool;
+    public void standOn(Tool tool) throws BusyException {
+        if(this.tool != null) {
+            throw new BusyException("подставка уже занята");
         }
-        catch(BusyException e){
-            System.out.println("подставка уже занята");
-        }
+        this.tool = tool;
     }
 
     public void lookOn(String watcher, String where) {
@@ -32,7 +27,17 @@ public class Stands extends Furniture {
         return tool.hashCode();
     }
 
-    public boolean equals(Stands stands) {
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        final Stands stands = (Stands) obj;
         if (this.tool.equals(stands.tool)) return true;
         else return false;
     }

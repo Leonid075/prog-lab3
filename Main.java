@@ -18,12 +18,19 @@ public final class Main {
 
         for(int i=0; i<rand.nextInt(5)+4; i++) {
             Stands stands = new Stands();
-            stands.standOn(new Gun(calibers[rand.nextInt(3)+3], guns[rand.nextInt(5)]));
+            try {
+                stands.standOn(new Gun(calibers[rand.nextInt(3)+3], guns[rand.nextInt(5)]));
+            }
+            catch(BusyException e){
+                System.out.println("подставка уже занята");
+            }
             furnitures.add(stands);
         }
         
         Bar bar = new Bar();
 
+
+        try {
         for(int i=0; i<rand.nextInt(3)+2; i++) {
             bar.standOn(new Handgun(calibers[rand.nextInt(3)], hadnguns[rand.nextInt(5)]));
         }
@@ -92,6 +99,10 @@ public final class Main {
             showcase2.standOn(new Make(colors[0]));
         }
         furnitures.add(showcase2);
+        }
+        catch(BusyException e){
+            System.out.println("подставка уже занята");
+        }
 
         Room shopRoom = new Room(furnitures, "магазин");
 

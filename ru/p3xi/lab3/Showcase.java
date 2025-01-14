@@ -11,7 +11,7 @@ public class Showcase extends Furniture {
     }
 
     @Override
-    public void standOn(Tool tool) {
+    public void standOn(Tool tool) throws BusyException {
         tools.add(tool);
     }
 
@@ -36,7 +36,17 @@ public class Showcase extends Furniture {
         return hash;
     }
 
-    public Boolean equals(Showcase stands) {
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        final Showcase stands = (Showcase) obj;
         if (!this.nameplate.equals(stands.nameplate)) return false;
 
         for(Tool tool1 : this.tools) {

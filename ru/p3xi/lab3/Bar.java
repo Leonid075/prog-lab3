@@ -9,7 +9,7 @@ public class Bar extends Furniture {
     }
 
     @Override
-    public void standOn(Tool tool) {
+    public void standOn(Tool tool) throws BusyException {
         tools.add(tool);
     }
 
@@ -34,7 +34,18 @@ public class Bar extends Furniture {
         return hash;
     }
 
-    public Boolean equals(Bar stands) {
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        final Bar stands = (Bar) obj;
+
         for(Tool tool1 : this.tools) {
             for(Tool tool2 : stands.tools) {
                 if (tool1.equals(tool2)) return false;

@@ -19,10 +19,6 @@ public class UnlockTools extends Tool {
             return false;
         }
 
-        if (this.name != obj.name) {
-            return false;
-        }
-
         return true;
     }
 }
